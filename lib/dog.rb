@@ -76,7 +76,7 @@ class Dog
       row = dog_rows[0]
       dog = self.new(name: row[1], breed: row[2], id: row[0])
     else
-      dog = self.create(name: name, breed: breed)
+      dog = self.create(hash)
     end
   end
 end
