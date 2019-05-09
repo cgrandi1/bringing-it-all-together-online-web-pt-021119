@@ -59,7 +59,6 @@ class Dog
 
   def self.new_from_db(row)
     new_student = self.new(row[1], row[2], row[0])
-    new_student
   end
 
   def self.find_by_id(id)
