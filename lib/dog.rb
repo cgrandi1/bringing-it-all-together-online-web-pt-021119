@@ -70,13 +70,12 @@ class Dog
   end
 
   def self.find_or_create_by(attr)
-    binding.pry
     dog_rows = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", attr[:name], attr[:breed])
     if !dog_rows.empty?
       row = dog_rows[0]
       dog = self.new(name: row[1], breed: row[2], id: row[0])
     else
-      dog = self.create(hash)
+      dog = self.create(attr)
     end
   end
 end
