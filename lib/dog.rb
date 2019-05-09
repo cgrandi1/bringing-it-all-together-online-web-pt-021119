@@ -50,6 +50,7 @@ class Dog
     binding.pry
     sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?"
     DB[:conn].execute(sql, self.name, self.breed, self.id)
+    #what what what to bring from teh dead
   end
 
   def self.create(name:, breed:)
@@ -68,6 +69,14 @@ class Dog
     SQL
 
     self.new_from_db(DB[:conn].execute(sql, id)[0])
+  end
+
+  def self.find_by_name(name)
+    sql = <<-SQL
+      SELECT * FROM dogs WHERE name = ?
+    SQL
+
+    DB[:conn].execute(sql, name)
   end
 
   def self.find_or_create_by(attr)
